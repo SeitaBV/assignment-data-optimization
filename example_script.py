@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import numpy as np
 import pandas as pd
 from pyomo.core import (
@@ -17,7 +19,7 @@ from pyomo.environ import value
 from pyomo.opt import SolverFactory
 
 
-def compute_soc_schedule(power_schedule, soc_start):
+def compute_soc_schedule(power_schedule: list[float], soc_start: float) -> list[float]:
     """Determine the scheduled state of charge (SoC), given a power schedule and a starting SoC.
 
     Does not take into account conversion efficiencies.
@@ -33,7 +35,7 @@ def schedule_simple_battery(
     soc_target: float,
     power_capacity: float,
     conversion_efficiency: float = 1,
-):
+) -> tuple[float, list[float]]:
     """Schedule a simplistic battery against given consumption and production prices.
 
     Solves the following optimization problem:
