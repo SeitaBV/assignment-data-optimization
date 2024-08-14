@@ -33,7 +33,7 @@ As said above, we have prepared [an example script](example_script.py) with sche
 
 - A battery is charged at 20% at midnight and must be maximally charged 24 hours later.
 - The battery's state of charge must remain between 10% and 90%.
-- The charge/discharge capacity is 10 kW.
+- The charge/discharge capacity is 10 kW. We are able to (dis)charge at any possible value within this range.
 - The storage capacity is 100 kWh.
 - Find the cheapest charging/discharging schedule given a set of hourly consumption prices and production prices.
 
@@ -49,7 +49,7 @@ Most of all, we want you to deliver something that works, so we can discuss it.
 
 Given the relevant parameters ("soc-start", "soc-min", "soc-max", "soc-target", "storage-capacity", "power-capacity" and "conversion-efficiency", all floats), return the minimized total charging costs and the corresponding charging schedule (power and SoC).
 
-Note: The example script does not use the `storage-capacity` yet.
+Note: The example script does not use the "storage-capacity" yet. This parameter does not play a role for the optimization problem as parametrized here, because the soc-max is actually below the hard limit of the storage-capacity. In task 2, it will become relevant.
 
 There might be situations (set forth by the parameters) when the scheduler encounters an infeasible problem. We should show a meaningful error message. Bonus if we can indicate what is wrong (beyond "your parameters are infeasible), extra bonus for testing some edge case.  
 
@@ -59,6 +59,7 @@ There might be situations (set forth by the parameters) when the scheduler encou
 In the example script, the maximum charge at the end of the schedule is currently just 90 kWh (so not really fully charged).
 
 Adjust the model to be able to top up to the full storage capacity (i.e. 100 kWh), while keeping the state of charge below 90% most of the time.
+Storage capacity is now relevant, as the "soc-max" becomes a softer limit while the hard limit of the storage-capacity comes into play.
 
 How would you document this new feature to users?
 
