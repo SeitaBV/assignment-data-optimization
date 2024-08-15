@@ -49,17 +49,19 @@ Most of all, we want you to deliver something that works, so we can discuss it.
 
 Given the relevant parameters ("soc-start", "soc-min", "soc-max", "soc-target", "storage-capacity", "power-capacity" and "conversion-efficiency", all floats), return the minimized total charging costs and the corresponding charging schedule (power and SoC).
 
-Note: The example script does not use the "storage-capacity" yet. This parameter does not play a role for the optimization problem as parametrized here, because the soc-max is actually below the hard limit of the storage-capacity. In task 2, it will become relevant.
+Note: The example script does not use the "storage-capacity" yet. This parameter does not play a role for the optimization problem as parametrized here, because the "soc-max" represents a hard limit that is below the hard limit of the "storage-capacity". In task 2, it will become relevant.
 
-There might be situations (set forth by the parameters) when the scheduler encounters an infeasible problem. We should show a meaningful error message. Bonus if we can indicate what is wrong (beyond "your parameters are infeasible), extra bonus for testing some edge case.  
+There might be situations (set forth by the parameters) when the scheduler encounters an infeasible problem. We should show a meaningful error message. Bonus if we can indicate what is wrong (beyond "your parameters are infeasible"), extra bonus for testing some edge case.
 
 
 ## Case 2: GET /schedule?top-up=true
 
+Typically, batteries degrade faster when they are nearly full or nearly empty, so it's best to, most of the time, stay within some bounds, here, for example, 10-90%.
 In the example script, the maximum charge at the end of the schedule is currently just 90 kWh (so not really fully charged).
 
-Adjust the model to be able to top up to the full storage capacity (i.e. 100 kWh), while keeping the state of charge below 90% most of the time.
-Storage capacity is now relevant, as the "soc-max" becomes a softer limit while the hard limit of the storage-capacity comes into play.
+Adjust the model to be able to top up to the full storage capacity (i.e. allow to set the "soc-target" to 100 kWh), while keeping the state of charge below 90% most of the time.
+Storage capacity is now relevant, as the "soc-max" becomes a softer limit while the hard limit of the "storage-capacity" comes into play.
+We are interested in seeing your linear modelling choices of converting a hard constraint into a soft constraint.
 
 How would you document this new feature to users?
 
@@ -72,3 +74,4 @@ Some things we take into consideration when we rate this assignment:
 * The endpoints should be demonstrable by you. But they should also be easy to start up for us (to see if they work). So please include clear instructions for somebody who is not you how to run this toy application (this begins with installing dependencies).
 * Both endpoints need clear documentation for users (think of the frontend developers mentioned above), at least in the docstring. How to use, what inputs look like, what to expect if things go well and what if they don't.
 * Testing is crucial. Time might not allow you to test all aspects, but please provide unit tests which test the basic behaviour. They should use dummy test data, like in the example script.
+* Please add at least 1 commit per task, so we can follow along your progression.
