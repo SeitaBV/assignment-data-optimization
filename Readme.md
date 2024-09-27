@@ -73,5 +73,6 @@ Some things we take into consideration when we rate this assignment:
 * The first two priorities are of course that the logic behaves *correctly* (input leads to the correct output) and that the API calls are *fast* (they do not take longer than necessary to return ― imagine this is being called hundreds or thousands of time per hour). But there are more priorities, and they do matter a lot for successful software development, see below.
 * The endpoints should be demonstrable by you. But they should also be easy to start up for us (to see if they work). So please include clear instructions for somebody who is not you how to run this toy application (this begins with installing dependencies).
 * Both endpoints need clear documentation for users (think of the frontend developers mentioned above), at least in the docstring. How to use, what inputs look like, what to expect if things go well and what if they don't.
-* Testing is crucial. Time might not allow you to test all aspects, but please provide unit tests which test the basic behaviour. They should use dummy test data, like in the example script.
+g Testing is crucial. Time might not allow you to test all aspects, but please provide unit tests which test the basic behaviour. They should use dummy test data, like in the example script.
 * Please add at least 1 commit per task, so we can follow along your progression.
+* Please place the last commit 24 hours before our interview.
